@@ -1,46 +1,27 @@
-# RTOS
+# RTOS.jl - Real-Time Operating System for Julia
 
-[![Build Status](https://github.com/bparbhu/RTOS.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/bparbhu/RTOS.jl/actions/workflows/CI.yml?query=branch%3Amaster)
-RTOS.jl - Real-Time Operating System for Julia
+## 🚀 Overview
+**RTOS.jl** is a high-performance **real-time operating system (RTOS)** built entirely in Julia. It is designed for **embedded systems, real-time applications, and mission-critical computing**, offering a feature set competitive with **FreeRTOS and PyRTOS**, but leveraging Julia's powerful numerical and parallel computing capabilities.
 
-🚀 Overview
+## 🌟 Features
+- **Preemptive & Priority Scheduling**
+- **Inter-Process Communication (IPC)**
+- **Task Lifecycle Management (Create, Suspend, Resume, Stop)**
+- **High-Precision Timers**
+- **Interrupt Handling**
+- **Memory Management & Dynamic Allocation**
+- **Synchronization Primitives:**
+  - Mutex with Priority Inheritance
+  - Binary & Counting Semaphores
+  - Task Notifications
+- **Safety Mechanisms:**
+  - Deadlock Prevention
+  - Watchdog Timers
+- **Real-Time Debugging & Logging**
+- **Static Compilation for Embedded Systems** (via `StaticCompiler.jl`)
 
-RTOS.jl is a high-performance real-time operating system (RTOS) built entirely in Julia. It is designed for embedded systems, real-time applications, and mission-critical computing, offering a feature set competitive with FreeRTOS and PyRTOS, but leveraging Julia's powerful numerical and parallel computing capabilities.
-
-🌟 Features
-
-Preemptive & Priority Scheduling
-
-Inter-Process Communication (IPC)
-
-Task Lifecycle Management (Create, Suspend, Resume, Stop)
-
-High-Precision Timers
-
-Interrupt Handling
-
-Memory Management & Dynamic Allocation
-
-Synchronization Primitives:
-
-Mutex with Priority Inheritance
-
-Binary & Counting Semaphores
-
-Task Notifications
-
-Safety Mechanisms:
-
-Deadlock Prevention
-
-Watchdog Timers
-
-Real-Time Debugging & Logging
-
-Static Compilation for Embedded Systems (via StaticCompiler.jl)
-
-📂 Project Structure
-
+## 📂 Project Structure
+```
 RTOS.jl/
 │── src/
 │   │── RTOS.jl           # Main entry point
@@ -65,16 +46,17 @@ RTOS.jl/
 │   │── test_timers.jl    # Timer tests
 │   │── test_safety.jl    # Safety tests
 │   │── test_sync.jl      # Synchronization tests
+```
 
-🛠 Installation
-
+## 🛠 Installation
 RTOS.jl is currently in development. To install it from source:
-
+```julia
 using Pkg
 Pkg.clone("https://github.com/bparbhu/RTOS.jl")
+```
 
-🚦 Quick Start
-
+## 🚦 Quick Start
+```julia
 using RTOS
 
 # Create and start a task
@@ -84,43 +66,37 @@ end
 
 create_task("my_task", example_task, 5)
 start_scheduler()
+```
 
-⚡ Synchronization Example
-
+## ⚡ Synchronization Example
+```julia
 using Sync
 
 create_mutex("resource_mutex")
 lock_mutex("resource_mutex", "task_1")
 unlock_mutex("resource_mutex")
+```
 
-🔬 Testing
-
+## 🔬 Testing
 Run all tests:
-
+```sh
 julia --project=test test/runtests.jl
-
+```
 Or inside the Julia REPL:
-
+```julia
 using Pkg
 Pkg.test()
+```
 
-🔧 Roadmap
+## 🔧 Roadmap
+- ✅ Full preemptive scheduling
+- ✅ Synchronization primitives (mutex, semaphores, notifications)
+- ⏳ Advanced profiling & performance benchmarking
+- ⏳ Extended driver support
+- ⏳ Integration with Julia embedded tooling
 
-✅ Full preemptive scheduling
-
-✅ Synchronization primitives (mutex, semaphores, notifications)
-
-⏳ Advanced profiling & performance benchmarking
-
-⏳ Extended driver support
-
-⏳ Integration with Julia embedded tooling
-
-🤝 Contributing
-
+## 🤝 Contributing
 We welcome contributions! Feel free to open issues and pull requests.
 
-📜 License
-
-RTOS.jl is licensed under the MIT License.
-
+## 📜 License
+RTOS.jl is licensed under the **MIT License**.
