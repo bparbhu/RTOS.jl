@@ -1,9 +1,9 @@
-# 10. Debugging Tools (Debug.jl) - Enhanced with Log Levels & Event Tracing
+# 10. Debugging Tools (Debug.jl) - Structured Logging & Event Tracing
 module Debug
 
-export log_event, set_debug_mode, set_log_level, trace_event
+export log_event, set_debug_mode, set_log_level, trace_event, dump_event_log, clear_event_log
 
-const LOG_LEVELS = Dict("INFO" => 1, "WARNING" => 2, "ERROR" => 3, "TRACE" => 0)
+const LOG_LEVELS = Dict("INFO" => 1, "WARNING" => 2, "ERROR" => 3, "TRACE" => 0, "CRITICAL" => 4)
 
 global DEBUG_MODE = true
 
@@ -13,8 +13,9 @@ global EVENT_LOG = []
 
 function log_event(level::String, event::String)
     if DEBUG_MODE && LOG_LEVELS[level] >= CURRENT_LOG_LEVEL
-        println("[", level, "] ", event)
-        push!(EVENT_LOG, (time(), level, event))
+        timestamp = time()
+        println("[", level, " - ", timestamp, "] ", event)
+        push!(EVENT_LOG, (timestamp, level, event))
     end
 end
 
@@ -32,6 +33,14 @@ function set_log_level(level::String)
     else
         println("[ERROR] Invalid log level: ", level)
     end
+end
+
+function dump_event_log()
+    return copy(EVENT_LOG)
+end
+
+function clear_event_log()
+    empty!(EVENT_LOG)
 end
 
 end # module Debug
