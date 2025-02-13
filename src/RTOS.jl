@@ -13,7 +13,8 @@ include("Interrupts.jl")
 include("Drivers.jl")
 include("Debug.jl")
 include("Utils.jl")
+include("Safety.jl")
 
-export start_scheduler, create_task, send_message, receive_message, allocate_memory, start_timer, compile_rtos, handle_interrupt, init_driver, log_event, get_system_time, set_task_priority, yield_task, stop_task
+export start_scheduler, create_task, send_message, receive_message, allocate_memory, start_timer, compile_rtos, handle_interrupt, init_driver, log_event, get_system_time, set_task_priority, yield_task, stop_task, register_watchdog, reset_watchdog, detect_deadlock
 
 end # module RTOS
