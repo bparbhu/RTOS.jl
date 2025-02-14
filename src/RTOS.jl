@@ -1,7 +1,12 @@
 # RTOS.jl - High-Performance Real-Time Operating System
 
-# 1. Main Entry Point (RTOS.jl)
 module RTOS
+
+using Dates
+
+using Bumper
+using StaticCompiler
+using ThreadsX
 
 include("Scheduler.jl")
 include("Task.jl")
