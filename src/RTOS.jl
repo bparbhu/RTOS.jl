@@ -1,4 +1,4 @@
-#RTOS.jl - High-Performance Real-Time Operating System
+# RTOS.jl - High-Performance Real-Time Operating System
 
 module RTOS
 
@@ -6,6 +6,13 @@ using Dates
 using Bumper
 using StaticCompiler
 using ThreadsX
+using LoggingExtras
+using TimerOutputs
+using Preferences
+using StrideArrays
+using PeriodicSystems
+using DifferentialEquations  # SciML integration
+using ModelingToolkit       # SciML integration
 
 include("Scheduler.jl")
 include("Task.jl")
@@ -28,6 +35,11 @@ include("FaultTolerance.jl")
 include("LoadBalancer.jl")
 include("Analytics.jl")
 include("ConfigManager.jl")
+
+# Future integrations with SciML ecosystem
+include("SystemModeling.jl")   # For dynamic system modeling
+include("Optimization.jl")     # For resource optimization
+include("ControlSystems.jl")   # For control system integration
 
 export start_scheduler,
 create_task,
@@ -74,6 +86,10 @@ pending_tasks,
 recover_from_fault,
 balance_load,
 collect_metrics,
-apply_config
+apply_config,
+model_system,
+optimize_resources,
+control_system
 
 end # module RTOS
+

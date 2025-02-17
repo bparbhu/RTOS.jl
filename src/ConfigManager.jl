@@ -1,5 +1,13 @@
+#ConfigManager.jl
+
 module ConfigManager
+
+using Preferences
 export apply_config
 
-apply_config(config::Dict) = println("Applying configuration: ", config)
+function apply_config(config::Dict)
+@info "Applying configuration: $config"
+# Implement configuration logic
 end
+
+end # module ConfigManager
