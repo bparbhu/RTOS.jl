@@ -13,6 +13,8 @@ using StrideArrays
 using PeriodicSystems
 using DifferentialEquations  # SciML integration
 using ModelingToolkit       # SciML integration
+using MLJ  # Machine learning integration
+using PeriodicScheduler  # Periodic scheduling integration
 
 include("Scheduler.jl")
 include("Task.jl")
@@ -35,6 +37,8 @@ include("FaultTolerance.jl")
 include("LoadBalancer.jl")
 include("Analytics.jl")
 include("ConfigManager.jl")
+include("RingBuffer.jl")
+include("MLIntegration.jl")  # MLJ integration modules
 
 # Future integrations with SciML ecosystem
 include("SystemModeling.jl")   # For dynamic system modeling
@@ -89,7 +93,9 @@ collect_metrics,
 apply_config,
 model_system,
 optimize_resources,
-control_system
+control_system,
+ml_optimize,
+periodic_schedule
 
 end # module RTOS
 
